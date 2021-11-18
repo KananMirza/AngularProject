@@ -1,0 +1,29 @@
+<main class="container">
+
+
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    {{date | date:'fullDate'}}
+    <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+    <strong *ngFor = "let user of users">
+      <span style="margin-right: 10px;cursor: pointer;" class="badge bg-primary"  routerLink="/posts/{{user.id}}">{{user.name }}</span>
+    </strong>
+    <input class="form-control me-2" [(ngModel)] = "filterText" type="search" placeholder="Search" aria-label="Search" style="margin-top: 10px;" >
+    <div class="d-flex text-muted pt-3" *ngFor = "let post of posts | postFilter:filterText">
+
+      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <p style="margin-right: 20px;">{{post.userId}}</p>
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">{{post.title}}</strong>
+       {{post.body}}
+       <span class="badge rounded-pill bg-info text-dark" (click)="addToFavorite(post)" style="cursor: pointer;">Favorite</span>
+      </p>
+
+    </div>
+
+  </div>
+
+
+</main>
+
+
+

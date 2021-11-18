@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let customer of customers" (click)="selectCustomer(customer)">
+    {{customer.firstName}} {{customer.lastName}}
+  </li>
+</ul>
+<strong *ngIf="selectedCustomer; else elseBlock">{{selectedCustomer.firstName}}: secdiniz</strong>
+
+<ng-template #elseBlock>
+  Zehmet olmasa ad secin
+</ng-template>
+
